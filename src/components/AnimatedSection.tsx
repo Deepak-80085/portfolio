@@ -23,9 +23,10 @@ const AnimatedSection = ({ children, className = '', delay = 0 }: AnimatedSectio
 
     gsap.set(content, {
       opacity: 0,
-      y: 50,
-      rotationX: 15,
-      transformPerspective: 1000,
+      y: 100,
+      rotationX: 20,
+      transformPerspective: 2000,
+      transformOrigin: "center bottom"
     });
 
     gsap.to(content, {
@@ -34,13 +35,14 @@ const AnimatedSection = ({ children, className = '', delay = 0 }: AnimatedSectio
         start: 'top 80%',
         end: 'bottom 20%',
         toggleActions: 'play none none reverse',
+        markers: false,
       },
       opacity: 1,
       y: 0,
       rotationX: 0,
-      duration: 1,
+      duration: 1.2,
       delay: delay,
-      ease: 'power3.out',
+      ease: 'power4.out',
     });
 
     return () => {
@@ -49,7 +51,7 @@ const AnimatedSection = ({ children, className = '', delay = 0 }: AnimatedSectio
   }, [delay]);
 
   return (
-    <div ref={sectionRef} className={`relative ${className}`} style={{ perspective: '1000px' }}>
+    <div ref={sectionRef} className={`relative ${className}`} style={{ perspective: '2000px' }}>
       <div ref={contentRef} className="transform-gpu">
         {children}
       </div>
