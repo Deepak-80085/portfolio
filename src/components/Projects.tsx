@@ -80,8 +80,8 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-portfolio-secondary">
       <div className="section-container">
         <AnimatedSection delay={0.2}>
-          <h2 className="section-title text-center text-portfolio-primary mb-8">My Projects</h2>
-          <p className="text-center text-portfolio-primary/80 max-w-2xl mx-auto mb-16">
+          <h2 className="section-title text-center text-portfolio-light mb-8">My Projects</h2>
+          <p className="text-center text-portfolio-light/80 max-w-2xl mx-auto mb-16">
             Here are some of my recent projects that showcase my skills and passion for technology.
             Each project represents a unique challenge and learning opportunity.
           </p>
@@ -90,27 +90,25 @@ const Projects = () => {
           <div className="md:hidden space-y-8">
             {projects.map((project, index) => (
               <AnimatedSection key={project.id} delay={0.2 * index}>
-                <motion.div
-                  className={`rounded-xl shadow-lg overflow-hidden bg-gradient-to-br ${project.color} hover:shadow-2xl transition-all duration-500`}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
+                <div
+                  className="rounded-xl shadow-lg overflow-hidden bg-portfolio-dark hover:shadow-2xl transition-all duration-500 transform-gpu hover:scale-105"
                 >
                   <div className="h-48 relative">
                     <project.ImageComponent />
                   </div>
                   <div className="p-6 bg-portfolio-secondary/95 backdrop-blur-sm">
-                    <h3 className="text-xl font-bold mb-2 text-portfolio-primary">{project.title}</h3>
-                    <p className="text-portfolio-primary/80 mb-4">{project.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-portfolio-light">{project.title}</h3>
+                    <p className="text-portfolio-light/80 mb-4">{project.description}</p>
                     <ul className="space-y-2">
                       {project.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex items-start">
                           <span className="text-portfolio-tertiary mr-2">•</span>
-                          <span className="text-portfolio-primary/70 text-sm">{bullet}</span>
+                          <span className="text-portfolio-light/70 text-sm">{bullet}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                </motion.div>
+                </div>
               </AnimatedSection>
             ))}
           </div>
@@ -120,31 +118,25 @@ const Projects = () => {
             <div className="grid grid-cols-5 gap-4 mb-8">
               {projects.map((project, index) => (
                 <AnimatedSection key={project.id} delay={0.1 * index}>
-                  <motion.div
-                    className={`cursor-pointer rounded-lg p-4 transition-all duration-300 ${
+                  <button
+                    className={`w-full cursor-pointer rounded-lg p-4 transition-all duration-300 transform-gpu hover:scale-105 ${
                       activeProject === index
-                        ? 'bg-portfolio-tertiary text-portfolio-primary scale-105 shadow-lg'
-                        : 'bg-portfolio-primary/5 hover:bg-portfolio-primary/10 text-portfolio-primary'
+                        ? 'bg-portfolio-tertiary text-portfolio-light scale-105 shadow-lg'
+                        : 'bg-portfolio-dark text-portfolio-light hover:bg-portfolio-accent1'
                     }`}
                     onClick={() => setActiveProject(index)}
-                    whileHover={{ y: -3, scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
                   >
                     <h3 className="text-center font-medium">
                       {project.title.split(' - ')[0]}
                     </h3>
-                  </motion.div>
+                  </button>
                 </AnimatedSection>
               ))}
             </div>
 
             <AnimatedSection delay={0.3}>
-              <motion.div
-                key={projects[activeProject].id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className={`rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br ${projects[activeProject].color}`}
+              <div
+                className="rounded-xl shadow-2xl overflow-hidden bg-portfolio-dark transform-gpu hover:scale-[1.02] transition-transform duration-500"
               >
                 <div className="grid md:grid-cols-2">
                   <div className="h-72 relative">
@@ -154,19 +146,19 @@ const Projects = () => {
                     })()}
                   </div>
                   <div className="p-8 bg-portfolio-secondary/95 backdrop-blur-sm">
-                    <h3 className="text-2xl font-bold mb-3 text-portfolio-primary">{projects[activeProject].title}</h3>
-                    <p className="text-portfolio-primary/80 mb-6">{projects[activeProject].description}</p>
+                    <h3 className="text-2xl font-bold mb-3 text-portfolio-light">{projects[activeProject].title}</h3>
+                    <p className="text-portfolio-light/80 mb-6">{projects[activeProject].description}</p>
                     <ul className="space-y-3">
                       {projects[activeProject].bullets.map((bullet, index) => (
                         <li key={index} className="flex items-start">
                           <span className="text-portfolio-tertiary mr-2 text-xl">•</span>
-                          <span className="text-portfolio-primary/70">{bullet}</span>
+                          <span className="text-portfolio-light/70">{bullet}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </AnimatedSection>
           </div>
         </AnimatedSection>

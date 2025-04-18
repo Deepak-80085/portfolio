@@ -1,6 +1,9 @@
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -9,64 +12,47 @@ interface AnimatedSectionProps {
 }
 
 const AnimatedSection = ({ children, className = '', delay = 0 }: AnimatedSectionProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "1.2 1"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [20, 0]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.15,
-      }
-    );
+    const section = sectionRef.current;
+    const content = contentRef.current;
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    if (!section || !content) return;
+
+    gsap.set(content, {
+      opacity: 0,
+      y: 50,
+      rotationX: 15,
+      transformPerspective: 1000,
+    });
+
+    gsap.to(content, {
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse',
+      },
+      opacity: 1,
+      y: 0,
+      rotationX: 0,
+      duration: 1,
+      delay: delay,
+      ease: 'power3.out',
+    });
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
+  }, [delay]);
 
   return (
-    <div ref={ref} className={className} style={{ perspective: '1000px' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 100, scale: 0.8, rotateX: 20 }}
-        animate={isVisible ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : { opacity: 0, y: 100, scale: 0.8, rotateX: 20 }}
-        transition={{
-          duration: 0.8,
-          delay: delay,
-          ease: [0.215, 0.61, 0.355, 1],
-        }}
-        style={{
-          opacity,
-          y,
-          scale,
-          rotateX,
-        }}
-        className="relative transform-gpu"
-      >
+    <div ref={sectionRef} className={`relative ${className}`} style={{ perspective: '1000px' }}>
+      <div ref={contentRef} className="transform-gpu">
         {children}
-      </motion.div>
+      </div>
     </div>
   );
 };
