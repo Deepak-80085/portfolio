@@ -16,25 +16,19 @@ const ProfilePhoto = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
-
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative w-64 h-64 md:w-96 md:h-96">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}
-        className="relative"
-      >
-        {/* Main avatar */}
-        <Avatar className="w-64 h-64 md:w-96 md:h-96 border-4 border-white shadow-2xl">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="relative w-32 h-32 md:w-40 md:h-40 mb-8"
+    >
+      <div className="rounded-full border-[3px] border-white shadow-xl overflow-hidden">
+        <Avatar className="w-32 h-32 md:w-40 md:h-40">
           <motion.div
             key={currentImageIndex}
             initial={{ opacity: 0 }}
@@ -48,29 +42,21 @@ const ProfilePhoto = () => {
               className="object-cover"
             />
           </motion.div>
-          <AvatarFallback className="bg-portfolio-primary text-white text-4xl">
+          <AvatarFallback className="bg-portfolio-primary text-white text-2xl">
             DK
           </AvatarFallback>
         </Avatar>
-
-        {/* Decorative elements */}
-        <motion.div
-          className="absolute -z-10 w-full h-full rounded-full bg-portfolio-primary/20"
-          style={{ top: '20px', left: '20px' }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-        />
-        
-        <motion.div
-          className="absolute -z-20 w-full h-full rounded-full bg-portfolio-primary/10"
-          style={{ top: '40px', left: '40px' }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        />
-      </motion.div>
-    </div>
+      </div>
+      
+      {/* Decorative ring */}
+      <motion.div
+        className="absolute inset-0 rounded-full border-2 border-portfolio-primary/20"
+        style={{ transform: 'scale(1.1)' }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1.1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      />
+    </motion.div>
   );
 };
 
