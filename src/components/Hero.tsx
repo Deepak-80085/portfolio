@@ -1,6 +1,6 @@
-
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import ProfilePhoto from './ProfilePhoto';
 
 const Hero = () => {
   return (
@@ -47,54 +47,12 @@ const Hero = () => {
           </motion.div>
           
           <motion.div 
-            className="md:w-1/2"
+            className="md:w-1/2 flex justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <div className="relative">
-              {/* Placeholder for hero image or illustration */}
-              <div className="w-72 h-72 md:w-96 md:h-96 bg-portfolio-primary/10 rounded-full mx-auto flex items-center justify-center">
-                <div className="w-64 h-64 md:w-80 md:h-80 bg-portfolio-primary/20 rounded-full flex items-center justify-center">
-                  <div className="w-48 h-48 md:w-64 md:h-64 bg-portfolio-primary/80 rounded-full flex items-center justify-center text-white font-bold text-4xl">
-                    DK
-                  </div>
-                </div>
-              </div>
-              
-              {/* Tech stack floating elements */}
-              <motion.div 
-                className="absolute -top-4 right-1/4 bg-white p-3 rounded-lg shadow-lg"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              >
-                <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-portfolio-primary to-portfolio-secondary">Python</span>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute top-1/4 -right-4 bg-white p-3 rounded-lg shadow-lg"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.5 }}
-              >
-                <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-portfolio-secondary to-portfolio-primary">Django</span>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute bottom-1/4 -left-4 bg-white p-3 rounded-lg shadow-lg"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1 }}
-              >
-                <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-portfolio-tertiary to-portfolio-secondary">React</span>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -bottom-4 left-1/4 bg-white p-3 rounded-lg shadow-lg"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1.5 }}
-              >
-                <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-portfolio-primary to-portfolio-tertiary">AI/ML</span>
-              </motion.div>
-            </div>
+            <ProfilePhoto />
           </motion.div>
         </div>
       </div>
