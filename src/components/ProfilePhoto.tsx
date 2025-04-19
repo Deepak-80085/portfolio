@@ -13,14 +13,14 @@ const ProfilePhoto = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto h-48 md:h-64">
+    <div className="relative w-full max-w-4xl mx-auto h-72 md:h-96">
       {images.map((image, index) => (
         <motion.div
           key={image}
           className="absolute top-0 left-1/2 cursor-pointer"
           initial={{ 
             opacity: 1, 
-            x: `calc(-50% + ${index * 60}px)`, 
+            x: `calc(-50% + ${index * 80}px)`, 
             rotate: index * -5,
             scale: 0.9,
             zIndex: images.length - Math.abs(index)
@@ -34,18 +34,18 @@ const ProfilePhoto = () => {
           animate={{
             scale: hoveredIndex === null ? 0.9 : (hoveredIndex === index ? 1.1 : 0.8),
             rotate: hoveredIndex === null ? index * -5 : (hoveredIndex === index ? 0 : index * -8),
-            x: `calc(-50% + ${index * 60}px)`,
+            x: `calc(-50% + ${index * 80}px)`,
             y: hoveredIndex === index ? -20 : 0
           }}
           transition={{ duration: 0.3 }}
           onHoverStart={() => setHoveredIndex(index)}
           onHoverEnd={() => setHoveredIndex(null)}
         >
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-xl bg-white p-1">
+          <div className="w-56 h-56 md:w-72 md:h-72 rounded-3xl overflow-hidden shadow-xl bg-white p-1">
             <img
               src={image}
               alt={`Profile photo ${index + 1}`}
-              className="w-full h-full object-cover rounded-xl"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </div>
         </motion.div>
