@@ -21,42 +21,31 @@ const ProfilePhoto = () => {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      className="relative w-32 h-32 md:w-40 md:h-40 mb-8"
-    >
-      <div className="rounded-full border-[3px] border-white shadow-xl overflow-hidden">
-        <Avatar className="w-32 h-32 md:w-40 md:h-40">
-          <motion.div
-            key={currentImageIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <AvatarImage
-              src={images[currentImageIndex]}
-              alt="Profile photo"
-              className="object-cover"
+    <div className="relative w-full max-w-3xl mx-auto h-48 md:h-64">
+      {images.map((image, index) => (
+        <motion.div
+          key={image}
+          className="absolute top-0 left-1/2"
+          initial={{ opacity: 0, x: '-50%', rotate: 0, scale: 0.8 }}
+          animate={{
+            opacity: 1,
+            x: `calc(-50% + ${(index - currentImageIndex) * 60}px)`,
+            rotate: (index - currentImageIndex) * -5,
+            scale: index === currentImageIndex ? 1 : 0.9,
+            zIndex: images.length - Math.abs(index - currentImageIndex)
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-xl bg-white p-1">
+            <img
+              src={image}
+              alt={`Profile photo ${index + 1}`}
+              className="w-full h-full object-cover rounded-xl"
             />
-          </motion.div>
-          <AvatarFallback className="bg-portfolio-primary text-white text-2xl">
-            DK
-          </AvatarFallback>
-        </Avatar>
-      </div>
-      
-      {/* Decorative ring */}
-      <motion.div
-        className="absolute inset-0 rounded-full border-2 border-portfolio-primary/20"
-        style={{ transform: 'scale(1.1)' }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1.1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      />
-    </motion.div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
   );
 };
 
