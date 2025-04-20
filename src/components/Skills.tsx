@@ -1,29 +1,26 @@
-
 import { motion } from 'framer-motion';
 
 const programmingSkills = [
-  { name: "Python", level: 90 },
-  { name: "C", level: 75 },
-  { name: "Java", level: 70 },
-  { name: "JavaScript", level: 80 },
-  { name: "SQL", level: 85 },
-  { name: "Django", level: 85 },
-  { name: "React", level: 75 },
-  { name: "Tailwind", level: 80 },
+  { name: "Python", level: 70 },
+  { name: "C", level: 50 },
+  { name: "Java", level: 40 },
+  { name: "JavaScript", level: 50 },
+  { name: "MySQL", level: 60 },
+  { name: "Django", level: 60 },
+  { name: "React", level: 40 },
 ];
 
 const toolsAndConcepts = [
-  { name: "Android Studio", level: 65 },
-  { name: "Git", level: 85 },
-  { name: "Auth0", level: 70 },
+  { name: "Android Studio", level: 55 },
+  { name: "Git", level: 65 },
+  { name: "Auth0", level: 65 },
   { name: "FlutterFlow", level: 65 },
-  { name: "LibreNMS", level: 75 },
-  { name: "IoT", level: 80 },
-  { name: "Computer Vision", level: 75 },
-  { name: "AI/ML", level: 70 },
-  { name: "Data Structures & Algorithms", level: 85 },
-  { name: "Networking", level: 70 },
-  { name: "Linux", level: 75 },
+  { name: "LibreNMS", level: 40 },
+  { name: "IoT", level: 55 },
+  { name: "Data Structures & Algorithms", level: 60 },
+  { name: "Networking", level: 55 },
+  { name: "Linux", level: 40 },
+  { name: "AI/ML", level: 40 },
 ];
 
 const SkillBar = ({ skill, delay }: { skill: { name: string, level: number }, delay: number }) => {
@@ -78,32 +75,31 @@ const Skills = () => {
             </div>
           </div>
           
-          {/* Skill categories - alternative visualization */}
           <motion.div 
-            className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+            className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="bg-portfolio-accent1 rounded-lg p-4 text-center">
-              <h4 className="font-semibold mb-2">Programming</h4>
-              <p className="text-sm text-gray-600">Python, Java, C, JavaScript</p>
+            <div className="bg-portfolio-accent1/20 rounded-lg p-4 text-center">
+              <h4 className="font-semibold mb-2 text-portfolio-dark">Programming</h4>
+              <p className="text-sm text-gray-800">Python, Java, C, JavaScript</p>
             </div>
             
-            <div className="bg-portfolio-accent2 rounded-lg p-4 text-center">
-              <h4 className="font-semibold mb-2">Web Development</h4>
-              <p className="text-sm text-gray-600">Django, React, HTML/CSS</p>
+            <div className="bg-portfolio-accent2/20 rounded-lg p-4 text-center">
+              <h4 className="font-semibold mb-2 text-portfolio-dark">Web Development</h4>
+              <p className="text-sm text-gray-800">Django, React, HTML/CSS</p>
             </div>
             
-            <div className="bg-portfolio-accent3 rounded-lg p-4 text-center">
-              <h4 className="font-semibold mb-2">Data & AI</h4>
-              <p className="text-sm text-gray-600">ML, Computer Vision, SQL</p>
+            <div className="bg-portfolio-accent3/20 rounded-lg p-4 text-center">
+              <h4 className="font-semibold mb-2 text-portfolio-dark">Data & AI</h4>
+              <p className="text-sm text-gray-800">ML, SQL</p>
             </div>
             
-            <div className="bg-portfolio-accent4 rounded-lg p-4 text-center">
-              <h4 className="font-semibold mb-2">Systems</h4>
-              <p className="text-sm text-gray-600">Linux, Networking, IoT</p>
+            <div className="bg-portfolio-accent4/20 rounded-lg p-4 text-center">
+              <h4 className="font-semibold mb-2 text-portfolio-dark">Systems</h4>
+              <p className="text-sm text-gray-800">Linux, Networking, IoT</p>
             </div>
           </motion.div>
         </motion.div>

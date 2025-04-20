@@ -1,17 +1,6 @@
-
 import { motion } from 'framer-motion';
 
 const interestsData = [
-  {
-    emoji: "🤖",
-    title: "AI Storytelling",
-    description: "Exploring how AI can be used to create engaging and meaningful stories for various audiences."
-  },
-  {
-    emoji: "🧮",
-    title: "Group Theory Research",
-    description: "Delving into abstract algebra and its applications in cryptography and computer science."
-  },
   {
     emoji: "💻",
     title: "Hackathons",
