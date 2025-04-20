@@ -13,39 +13,39 @@ const ProfilePhoto = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto h-48 md:h-64">
+    <div className="relative w-full max-w-5xl mx-auto h-64 md:h-80">
       {images.map((image, index) => (
         <motion.div
           key={image}
-          className="absolute top-0 left-1/2 cursor-pointer"
-          initial={{ 
-            opacity: 1, 
-            x: `calc(-50% + ${index * 60}px)`, 
-            rotate: index * -5,
-            scale: 0.9,
-            zIndex: images.length - Math.abs(index)
+          className="absolute top-1/2 transform -translate-y-1/2 cursor-pointer overflow-hidden rounded-2xl"
+          style={{
+            left: `${(index * 25)}%`,
+            zIndex: hoveredIndex === index ? 10 : images.length - Math.abs(index),
           }}
           whileHover={{ 
             scale: 1.1,
+            filter: 'brightness(1.1)',
             rotate: 0,
             zIndex: 10,
-            transition: { duration: 0.2 }
+          }}
+          initial={{ 
+            rotate: (index - 2) * 5,
           }}
           animate={{
-            scale: hoveredIndex === null ? 0.9 : (hoveredIndex === index ? 1.1 : 0.8),
-            rotate: hoveredIndex === null ? index * -5 : (hoveredIndex === index ? 0 : index * -8),
-            x: `calc(-50% + ${index * 60}px)`,
-            y: hoveredIndex === index ? -20 : 0
+            rotate: hoveredIndex === null ? (index - 2) * 5 : 0,
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ 
+            duration: 0.3, 
+            ease: 'easeInOut'
+          }}
           onHoverStart={() => setHoveredIndex(index)}
           onHoverEnd={() => setHoveredIndex(null)}
         >
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-xl bg-white p-1">
+          <div className="w-48 md:w-64 h-48 md:h-64 overflow-hidden bg-white shadow-xl">
             <img
               src={image}
               alt={`Profile photo ${index + 1}`}
-              className="w-full h-full object-cover rounded-xl"
+              className="w-full h-full object-cover"
             />
           </div>
         </motion.div>

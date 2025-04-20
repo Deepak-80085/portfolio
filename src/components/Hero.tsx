@@ -5,7 +5,7 @@ import ProfilePhoto from './ProfilePhoto';
 const Hero = () => {
   return (
     <section id="hero" className="min-h-screen flex flex-col items-center justify-center bg-white px-4 pt-20">
-      <div className="max-w-5xl mx-auto text-center space-y-12">
+      <div className="max-w-6xl mx-auto text-center space-y-16">
         <motion.div
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
