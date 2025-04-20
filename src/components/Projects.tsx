@@ -6,11 +6,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { FaGithub } from 'react-icons/fa';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import HoverImage from './HoverImage';
 
 const Projects = () => {
   const projects = [
     {
       title: "Internship",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
       purpose: "Python scripts for SNMP‑based IoT monitoring during an internship.",
       features: ["SNMP polling", "Log parsing", "Alert generation"],
       tech: ["Python 3", "pysnmp", "os", "argparse"],
@@ -18,6 +20,7 @@ const Projects = () => {
     },
     {
       title: "Python & Django Projects",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
       purpose: "Collection of Python tools and Django web applications.",
       features: [
         "File Organizer: Sorts files into categorized folders",
@@ -30,6 +33,7 @@ const Projects = () => {
     },
     {
       title: "HTML Projects",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
       purpose: "Front‑end demos in HTML/CSS/JS.",
       features: [
         "Cosmic Explorer: Interactive solar‑system tour with planet animations",
@@ -40,6 +44,7 @@ const Projects = () => {
     },
     {
       title: "Christ University Projects",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
       purpose: "Academic code for Data Structures, OS, DBMS, and Java labs.",
       features: [
         "C/C++ implementations of algorithms (sorting, trees, graphs)",
@@ -50,6 +55,7 @@ const Projects = () => {
     },
     {
       title: "C Programming Projects",
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
       purpose: "Core C programming examples and small systems.",
       features: [
         "Grade Management System: CLI to record and compute student grades",
@@ -61,6 +67,7 @@ const Projects = () => {
     },
     {
       title: "Sportshunt Platform",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
       purpose: "Mission: Connect all sports users and simplify facility bookings.",
       features: [
         "Venue Hub: Book courts, host tournaments, and shop equipment",
@@ -95,6 +102,13 @@ const Projects = () => {
                   >
                     <Card className="h-full bg-[#2A2F3C] border-none text-white hover:shadow-xl transition-shadow">
                       <CardHeader>
+                        <div className="w-full h-48 mb-4">
+                          <HoverImage
+                            src={project.image}
+                            alt={project.title}
+                            className="rounded-lg"
+                          />
+                        </div>
                         <div className="flex justify-between items-start">
                           <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
                           {project.githubLink && (
