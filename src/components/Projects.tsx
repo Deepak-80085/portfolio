@@ -1,200 +1,154 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import AnimatedSection from './AnimatedSection';
-import { 
-  MewMawImage, 
-  ExpenseEaseImage, 
-  KannadaOCRImage, 
-  SportshuntImage, 
-  JarvisImage 
-} from './ProjectImages';
-
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { FaGithub } from 'react-icons/fa';
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState(0);
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    projectRefs.current.forEach((ref, index) => {
-      if (!ref) return;
-
-      gsap.fromTo(ref,
-        {
-          opacity: 0,
-          y: 50,
-          rotationX: 15,
-          transformPerspective: 1000,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotationX: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: ref,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse',
-          }
-        }
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-
   const projects = [
     {
-      id: 1,
-      title: "🎨 MewMaw - Lead Developer",
-      description: "AI-powered storytelling platform generating illustrated children's stories from prompts",
-      bullets: [
-        "Tech Stack: Python, Django, OpenAI API, React, TailwindCSS",
-        "Implemented end-to-end story generation pipeline and image creation workflow",
-        "Achieved 30% faster story generation through prompt engineering and caching techniques"
-      ],
-      ImageComponent: MewMawImage,
-      color: "from-blue-50 to-indigo-100"
+      title: "Internship",
+      purpose: "Python scripts for SNMP‑based IoT monitoring during an internship.",
+      features: ["SNMP polling", "Log parsing", "Alert generation"],
+      tech: ["Python 3", "pysnmp", "os", "argparse"],
+      githubLink: "#"
     },
     {
-      id: 2,
-      title: "💰 ExpenseEase - Full Stack Developer",
-      description: "Group expense tracking and splitting application with intuitive mobile UI",
-      bullets: [
-        "Tech Stack: React Native, Firebase, Node.js, Express, MongoDB",
-        "Built real-time expense calculation and debt simplification algorithm",
-        "Implemented secure payment integration with multiple providers reducing settlement time by 40%"
+      title: "Python Projects",
+      purpose: "Collection of personal CLI tools and exercises.",
+      features: [
+        "File Organizer: Automatically sorts files into categorized folders",
+        "Interactive Quiz: Console quiz engine with random questions and scoring"
       ],
-      ImageComponent: ExpenseEaseImage,
-      color: "from-green-50 to-emerald-100"
+      tech: ["Python 3", "shutil", "I/O operations"],
+      githubLink: "#"
     },
     {
-      id: 3,
-      title: "🔤 Kannada OCR - Computer Vision Specialist",
-      description: "Optical character recognition system for Kannada script with 90%+ accuracy",
-      bullets: [
-        "Tech Stack: Python, TensorFlow, OpenCV, PyTorch, Flask",
-        "Developed custom CNN architecture for Kannada character recognition",
-        "Achieved 92% recognition accuracy on handwritten characters through data augmentation"
+      title: "HTML Projects",
+      purpose: "Front‑end demos in HTML/CSS/JS.",
+      features: [
+        "Cosmic Explorer: Interactive solar‑system tour with planet animations",
+        "Dino Game: Chrome‑style offline dinosaur runner with dynamic obstacles"
       ],
-      ImageComponent: KannadaOCRImage,
-      color: "from-orange-50 to-amber-100"
+      tech: ["HTML5", "CSS3", "Flexbox", "Vanilla JS"],
+      githubLink: "#"
     },
     {
-      id: 4,
-      title: "🏆 Sportshunt - E-commerce Developer",
-      description: "Sports equipment e-commerce platform with advanced filtering and recommendations",
-      bullets: [
-        "Tech Stack: Django, PostgreSQL, React, Redux, Stripe API",
-        "Implemented responsive product catalog with real-time inventory management",
-        "Developed personalized recommendation engine increasing average order value by 25%"
+      title: "Christ University Projects",
+      purpose: "Academic code for Data Structures, OS, DBMS, and Java labs.",
+      features: [
+        "C/C++ implementations of algorithms (sorting, trees, graphs)",
+        "Java exercises and Python scripts from coursework"
       ],
-      ImageComponent: SportshuntImage,
-      color: "from-red-50 to-rose-100"
+      tech: ["C++ (63%)", "C (19%)", "Java (15%)", "Python"],
+      githubLink: "#"
     },
     {
-      id: 5,
-      title: "🤖 Jarvis-Style AI Assistant - Lead Architect",
-      description: "Voice-activated personal assistant with custom command processing",
-      bullets: [
-        "Tech Stack: Python, TensorFlow, Google Speech API, NLP libraries",
-        "Built modular architecture supporting 20+ custom voice commands and integrations",
-        "Implemented context-aware conversation flows with 85% intent recognition accuracy"
+      title: "C Programming Projects",
+      purpose: "Core C programming examples and small systems.",
+      features: [
+        "Grade Management System: CLI to record and compute student grades",
+        "Personal Finance Tracker: Expense/income ledger",
+        "Mandelbrot Generator: Fractal renderer"
       ],
-      ImageComponent: JarvisImage,
-      color: "from-purple-50 to-violet-100"
+      tech: ["C (97.5%)", "Makefiles"],
+      githubLink: "#"
     },
+    {
+      title: "Django Projects",
+      purpose: "Web applications demonstrating Django capabilities.",
+      features: [
+        "Basic calculator with input form and result display",
+        "REST-Framework to-do API with complete CRUD operations",
+        "CI/CD integration with GitHub Actions"
+      ],
+      tech: ["Django 5.1.4", "Django REST Framework", "asgiref", "sqlparse"],
+      githubLink: "#"
+    },
+    {
+      title: "Sportshunt Platform",
+      purpose: "Mission: Connect all sports users and simplify facility bookings.",
+      features: [
+        "Venue Hub: Book courts, host tournaments, and shop equipment",
+        "Community features linking athletes, coaches, and fans"
+      ],
+      tech: ["Full-stack web development", "Booking system", "Social features"],
+      link: "https://sportshunt.in"
+    }
   ];
 
   return (
     <section id="projects" className="py-20 bg-[#1A1F2C]">
-      <div className="section-container">
+      <div className="container mx-auto px-4">
         <AnimatedSection delay={0.2}>
-          <h2 className="section-title text-center text-white mb-8">My Projects</h2>
-          <p className="text-center text-white/80 max-w-2xl mx-auto mb-16">
-            Here are some of my recent projects that showcase my skills and passion for technology.
-            Each project represents a unique challenge and learning opportunity.
-          </p>
-
-          <div className="hidden md:block">
-            <div className="grid grid-cols-5 gap-4 mb-8">
-              {projects.map((project, index) => (
-                <motion.button
-                  key={project.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-full cursor-pointer rounded-lg p-4 transition-all duration-300 ${
-                    activeProject === index
-                      ? 'bg-[#8B5CF6] text-white shadow-lg'
-                      : 'bg-[#2A2F3C] text-white/80 hover:bg-[#8B5CF6]/80'
-                  }`}
-                  onClick={() => setActiveProject(index)}
-                >
-                  <h3 className="text-center font-medium">
-                    {project.title.split(' - ')[0]}
-                  </h3>
-                </motion.button>
-              ))}
-            </div>
-
-            <div
-              ref={el => projectRefs.current[activeProject] = el}
-              className="rounded-xl shadow-2xl overflow-hidden bg-[#2A2F3C] transform-gpu transition-all duration-500"
-            >
-              <div className="grid md:grid-cols-2">
-                <div className="h-72 relative">
-                  {(() => {
-                    const ProjectImage = projects[activeProject].ImageComponent;
-                    return <ProjectImage />;
-                  })()}
-                </div>
-                <div className="p-8 bg-[#2A2F3C]/95 backdrop-blur-sm">
-                  <h3 className="text-2xl font-bold mb-3 text-white">{projects[activeProject].title}</h3>
-                  <p className="text-white/80 mb-6">{projects[activeProject].description}</p>
-                  <ul className="space-y-3">
-                    {projects[activeProject].bullets.map((bullet, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-[#8B5CF6] mr-2 text-xl">•</span>
-                        <span className="text-white/70">{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:hidden space-y-8">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">Projects</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <div
-                key={project.id}
-                ref={el => projectRefs.current[index] = el}
-                className="rounded-xl shadow-lg overflow-hidden bg-[#2A2F3C] hover:shadow-2xl transition-all duration-500"
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="h-48 relative">
-                  <project.ImageComponent />
-                </div>
-                <div className="p-6 bg-[#2A2F3C]/95 backdrop-blur-sm">
-                  <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
-                  <p className="text-white/80 mb-4">{project.description}</p>
-                  <ul className="space-y-2">
-                    {project.bullets.map((bullet, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <span className="text-[#8B5CF6] mr-2">•</span>
-                        <span className="text-white/70 text-sm">{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                <Card className="h-full bg-[#2A2F3C] border-none text-white hover:shadow-xl transition-shadow">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                      {project.githubLink && (
+                        <a 
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/70 hover:text-white transition-colors"
+                        >
+                          <FaGithub size={24} />
+                        </a>
+                      )}
+                      {project.link && (
+                        <a 
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/70 hover:text-white transition-colors"
+                        >
+                          🔗
+                        </a>
+                      )}
+                    </div>
+                    <CardDescription className="text-white/70">
+                      {project.purpose}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold mb-2 text-[#8B5CF6]">Features</h4>
+                        <ul className="list-disc pl-5 space-y-1 text-white/70">
+                          {project.features.map((feature, idx) => (
+                            <li key={idx}>{feature}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2 text-[#8B5CF6]">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((tech, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-2 py-1 rounded-md bg-[#1A1F2C] text-white/70 text-sm"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </AnimatedSection>
