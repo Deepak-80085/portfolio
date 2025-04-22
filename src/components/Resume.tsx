@@ -41,11 +41,14 @@ const Resume = () => {
               {/* Resume Header */}
               <div className="text-center mb-8">
                 <h1 className="text-3xl font-bold text-portfolio-dark">DEEPAK KUMARAN M</h1>
-                <p className="text-gray-600">Bangalore, India • deepak@example.com</p>
+                <p className="text-gray-600">Bangalore, India • deepak.kumaran.m.10@gmail.com</p>
                 <div className="flex justify-center space-x-4 mt-2">
-                  <a href="#" className="text-portfolio-primary hover:text-portfolio-tertiary">LinkedIn</a>
-                  <a href="#" className="text-portfolio-primary hover:text-portfolio-tertiary">GitHub</a>
+                  <a href="https://www.linkedin.com/in/deepak-kumaran-m-ba229228b/" target="_blank" rel="noopener noreferrer" className="text-portfolio-primary hover:text-portfolio-tertiary">LinkedIn</a>
+                  <a href="https://github.com/Deepak-80085" target="_blank" rel="noopener noreferrer" className="text-portfolio-primary hover:text-portfolio-tertiary">GitHub</a>
                 </div>
+                <p className="mt-3 text-gray-700 italic">
+                  "If we lose credibility just by admitting fault, then we didn't have any in the first place."
+                </p>
               </div>
               
               {/* Professional Summary */}
@@ -89,6 +92,19 @@ const Resume = () => {
               {/* Experience */}
               <div className="mb-6">
                 <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3 text-portfolio-primary">EXPERIENCE</h2>
+                <div className="mb-4">
+                  <div className="flex justify-between items-start">
+                    <h3 className="font-bold">Frontend Developer</h3>
+                    <span>August 2024 - Present</span>
+                  </div>
+                  <p className="italic mb-2">Sportshunt, Bangalore</p>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li>Developing responsive web interfaces using HTML, CSS, JavaScript, and React Vite</li>
+                    <li>Working with backend Django REST APIs for full-stack feature implementation</li>
+                    <li>Implementing booking system UI flows and community features for sports platform</li>
+                    <li>Building and optimizing UI components for improved user experience</li>
+                  </ul>
+                </div>
                 <div>
                   <div className="flex justify-between items-start">
                     <h3 className="font-bold">Network & Linux Intern</h3>

@@ -17,6 +17,57 @@ const Experience = () => {
             <div className="relative pl-8 sm:pl-32 py-6 group">
               {/* Timeline dot */}
               <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-4 after:h-4 after:bg-portfolio-primary after:border-2 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                <time className="sm:absolute sm:left-0 sm:ml-2 sm:text-right sm:min-w-[5.5rem] flex items-center justify-center text-xs font-semibold uppercase text-white bg-slate-700 h-6 mb-3 sm:mb-0 px-3 rounded-full">Aug 2024</time>
+                <div className="text-xl font-bold text-portfolio-primary">Frontend Developer</div>
+              </div>
+              <div className="text-slate-500 mb-2 text-lg">Sportshunt</div>
+              <ul className="space-y-3">
+                <motion.li 
+                  className="flex items-start"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                >
+                  <span className="text-portfolio-primary mr-2">•</span>
+                  <span>Developing responsive web interfaces using HTML, CSS, JavaScript, and React Vite</span>
+                </motion.li>
+                <motion.li 
+                  className="flex items-start"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <span className="text-portfolio-primary mr-2">•</span>
+                  <span>Working with backend Django REST APIs for full-stack feature implementation</span>
+                </motion.li>
+                <motion.li 
+                  className="flex items-start"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                >
+                  <span className="text-portfolio-primary mr-2">•</span>
+                  <span>Implementing booking system UI flows and community features for sports platform</span>
+                </motion.li>
+                <motion.li 
+                  className="flex items-start"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
+                >
+                  <span className="text-portfolio-primary mr-2">•</span>
+                  <span>Building and optimizing UI components for improved user experience</span>
+                </motion.li>
+              </ul>
+            </div>
+            
+            <div className="relative pl-8 sm:pl-32 py-6 group">
+              {/* Timeline dot */}
+              <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-4 after:h-4 after:bg-portfolio-primary after:border-2 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
                 <time className="sm:absolute sm:left-0 sm:ml-2 sm:text-right sm:min-w-[5.5rem] flex items-center justify-center text-xs font-semibold uppercase text-white bg-slate-700 h-6 mb-3 sm:mb-0 px-3 rounded-full">May 2024</time>
                 <div className="text-xl font-bold text-portfolio-primary">Network & Linux Intern</div>
               </div>

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
@@ -32,6 +33,23 @@ const Index = () => {
     if (ogDescription) {
       ogDescription.setAttribute('content', 'Portfolio of Deepak Kumaran M, a Computer Science & Mathematics student passionate about technology and innovation.');
     }
+    
+    // Add smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId) {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
   }, []);
 
   return (
@@ -39,6 +57,7 @@ const Index = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
+      className="overflow-hidden" // Prevent horizontal overflow
     >
       <Navbar />
       <Hero />

@@ -22,17 +22,13 @@ const ProfilePhoto = () => {
             left: `${(index * 25)}%`,
             zIndex: hoveredIndex === index ? 10 : images.length - Math.abs(index),
           }}
-          whileHover={{ 
-            scale: 1.1,
-            filter: 'brightness(1.1)',
-            rotate: 0,
-            zIndex: 10,
-          }}
           initial={{ 
             rotate: (index - 2) * 5,
           }}
           animate={{
-            rotate: hoveredIndex === null ? (index - 2) * 5 : 0,
+            scale: hoveredIndex === index ? 1.1 : 1,
+            filter: hoveredIndex === index ? 'brightness(1.1)' : 'brightness(1)',
+            rotate: hoveredIndex === null ? (index - 2) * 5 : (hoveredIndex === index ? 0 : (index - 2) * 5),
           }}
           transition={{ 
             duration: 0.3, 

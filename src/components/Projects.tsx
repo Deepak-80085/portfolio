@@ -81,6 +81,7 @@ const Projects = () => {
             opts={{
               align: "start",
               loop: true,
+              dragFree: true, // Enables momentum scrolling
             }}
             className="w-full"
           >
@@ -92,8 +93,12 @@ const Projects = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      transition: { duration: 0.3, ease: "easeInOut" } 
+                    }}
                   >
-                    <Card className="h-full bg-[#2A2F3C] border-none text-white hover:shadow-xl transition-shadow">
+                    <Card className="h-full bg-[#2A2F3C] border-none text-white hover:shadow-xl transition-all">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
