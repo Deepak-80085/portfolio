@@ -1,20 +1,21 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { FaGithub } from 'react-icons/fa';
+import ProjectCard from './ProjectCard';
+import { FaCode, FaPython, FaHtml5, FaUniversity, FaTerminal, FaDumbbell } from 'react-icons/fa';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
-import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 const Projects = () => {
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+
   const projects = [
     {
       title: "Internship",
       purpose: "Python scripts for SNMP‑based IoT monitoring during an internship.",
       features: ["SNMP polling", "Log parsing", "Alert generation"],
       tech: ["Python 3", "pysnmp", "os", "argparse"],
-      githubLink: "https://github.com/Deepak-80085"
+      githubLink: "https://github.com/Deepak-80085",
+      icon: <FaCode className="w-6 h-6" />
     },
     {
       title: "Python & Django Projects",
@@ -81,82 +82,18 @@ const Projects = () => {
             opts={{
               align: "start",
               loop: true,
-              dragFree: true, // Enables momentum scrolling
+              dragFree: true,
             }}
             className="w-full"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {projects.map((project, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      transition: { duration: 0.3, ease: "easeInOut" } 
-                    }}
-                  >
-                    <Card className="h-full bg-[#2A2F3C] border-none text-white hover:shadow-xl transition-all">
-                      <CardHeader>
-                        <div className="flex justify-between items-start">
-                          <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                          {project.githubLink && (
-                            <a 
-                              href={project.githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white/70 hover:text-white transition-colors"
-                            >
-                              <FaGithub size={24} />
-                            </a>
-                          )}
-                          {project.link && (
-                            <a 
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white/70 hover:text-white transition-colors"
-                            >
-                              🔗
-                            </a>
-                          )}
-                        </div>
-                        <CardDescription className="text-white/70">
-                          {project.purpose}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <ScrollArea className="h-[320px] w-full rounded-md">
-                          <div className="space-y-4">
-                            <div>
-                              <h4 className="font-semibold mb-2 text-[#8B5CF6]">Features</h4>
-                              <ul className="list-disc pl-5 space-y-1 text-white/70">
-                                {project.features.map((feature, idx) => (
-                                  <li key={idx}>{feature}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h4 className="font-semibold mb-2 text-[#8B5CF6]">Tech Stack</h4>
-                              <div className="flex flex-wrap gap-2">
-                                {project.tech.map((tech, idx) => (
-                                  <span 
-                                    key={idx}
-                                    className="px-2 py-1 rounded-md bg-[#1A1F2C] text-white/70 text-sm"
-                                  >
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                          <ScrollBar />
-                        </ScrollArea>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                  <ProjectCard 
+                    {...project}
+                    isActive={index === activeCardIndex}
+                    onClick={() => setActiveCardIndex(index)}
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>
