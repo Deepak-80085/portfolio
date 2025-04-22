@@ -5,10 +5,14 @@ import { motion } from 'framer-motion';
 const Resume = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const openResumeLink = () => {
+    window.open('https://drive.google.com/file/d/1Z34Vzr-cpFWM5NxGRLijAyDmJ4a1r986/view?usp=sharing', '_blank');
+  };
+
   return (
     <>
       <button 
-        onClick={() => setIsOpen(true)} 
+        onClick={openResumeLink} 
         className="bg-portfolio-primary text-white py-2 px-6 rounded-md hover:bg-portfolio-tertiary transition-colors duration-300"
       >
         View Resume
