@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
@@ -6,8 +5,6 @@ import { ScrollArea } from "./ui/scroll-area";
 import { Briefcase, Code, Globe, GraduationCap, Database, Layout } from 'lucide-react';
 
 interface ProjectCardProps {
-  isActive: boolean;
-  onClick: () => void;
   title: string;
   purpose: string;
   features: string[];
@@ -19,8 +16,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  isActive,
-  onClick,
   title,
   purpose,
   features,
@@ -30,36 +25,36 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   icon: Icon,
   color,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.div
-      className={`flex-none ${isActive ? 'w-[400px]' : 'w-[250px]'} transition-all duration-500 ease-in-out`}
+      className="w-[300px] flex-none"
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      whileHover={{ scale: isActive ? 1 : 1.02 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div 
-        className={`h-[400px] rounded-xl transition-all duration-500 ease-in-out cursor-pointer overflow-hidden
-          ${isActive ? 'bg-[#D3E4FD]' : 'bg-white/5'}
+        className={`h-[400px] rounded-xl transition-all duration-500 ease-in-out overflow-hidden
+          ${isHovered ? 'bg-[#D3E4FD]' : 'bg-white/5'}
           hover:bg-[#D3E4FD] group`}
-        onClick={onClick}
       >
         <div className="p-6 h-full flex flex-col">
           <div className="flex items-start gap-4 mb-4">
-            <div 
-              className={`p-3 rounded-full ${color} transition-colors duration-500`}
-            >
+            <div className={`p-3 rounded-full ${color} transition-colors duration-500`}>
               <Icon 
                 size={24} 
-                className={`${isActive ? 'text-black' : 'text-white'} group-hover:text-black transition-colors duration-500`} 
+                className={`${isHovered ? 'text-black' : 'text-white'} group-hover:text-black transition-colors duration-500`} 
               />
             </div>
             <div className="flex-1">
-              <h3 className={`text-xl font-semibold mb-2 ${isActive ? 'text-black' : 'text-white'} group-hover:text-black transition-colors duration-500`}>
+              <h3 className={`text-xl font-semibold mb-2 ${isHovered ? 'text-black' : 'text-white'} group-hover:text-black transition-colors duration-500`}>
                 {title}
               </h3>
-              <p className={`text-sm ${isActive ? 'text-black/70' : 'text-white/70'} group-hover:text-black/70 transition-colors duration-500`}>
+              <p className={`text-sm ${isHovered ? 'text-black/70' : 'text-white/70'} group-hover:text-black/70 transition-colors duration-500`}>
                 {purpose}
               </p>
             </div>
@@ -67,10 +62,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           
           <motion.div 
             className="flex-grow overflow-hidden"
-            animate={{ opacity: isActive ? 1 : 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            {isActive && (
+            {isHovered && (
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2 text-black/90">Features</h4>
@@ -103,8 +98,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 const Projects = () => {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  
   const projects = [
     {
       title: "Internship",
@@ -187,12 +180,10 @@ const Projects = () => {
           <h2 className="text-4xl font-bold text-white text-center mb-12">Projects</h2>
           
           <ScrollArea className="w-full whitespace-nowrap">
-            <div className="flex space-x-6 pb-4">
+            <div className="flex">
               {projects.map((project, index) => (
                 <ProjectCard
                   key={index}
-                  isActive={activeProjectIndex === index}
-                  onClick={() => setActiveProjectIndex(index)}
                   {...project}
                 />
               ))}
