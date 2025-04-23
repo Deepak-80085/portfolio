@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { Card } from './ui/card';
@@ -7,7 +7,118 @@ import { FaGithub } from 'react-icons/fa';
 import { ScrollArea } from "./ui/scroll-area";
 import { Briefcase, Code, Globe, GraduationCap, Database, Layout } from 'lucide-react';
 
+// Define the ProjectCardProps interface to make the TypeScript checker happy
+interface ProjectCardProps {
+  isActive: boolean;
+  onClick: () => void;
+  title: string;
+  purpose: string;
+  features: string[];
+  tech: string[];
+  githubLink?: string;
+  link?: string;
+  icon: React.ElementType; // This is required according to the error
+}
+
+// ProjectCard component
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  isActive,
+  onClick,
+  title,
+  purpose,
+  features,
+  tech,
+  githubLink,
+  link,
+  icon: Icon, // Destructure the icon prop and rename to Icon for JSX usage
+}) => {
+  return (
+    <motion.div
+      className="flex-none w-[300px]"
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      whileHover={{ 
+        scale: 1.05,
+        transition: { duration: 0.3, ease: "easeInOut" } 
+      }}
+    >
+      <Card 
+        className={`h-[400px] ${isActive ? 'bg-[#D3E4FD] text-black' : 'bg-[#2A2F3C] text-white'} border-none hover:bg-[#D3E4FD] hover:text-black transition-all duration-500 ease-in-out group cursor-pointer`}
+        onClick={onClick}
+      >
+        <div className="p-6 h-full flex flex-col">
+          <div className="flex justify-between items-start mb-4">
+            <div className="flex items-center gap-3">
+              <Icon 
+                size={24} 
+                className={`${isActive ? 'text-black' : 'text-white/70'} group-hover:text-black transition-colors duration-500`} 
+              />
+              <h3 className="text-xl font-semibold">{title}</h3>
+            </div>
+            {githubLink && (
+              <a 
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${isActive ? 'text-black' : 'text-white/70'} group-hover:text-black transition-colors duration-500`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <FaGithub size={24} />
+              </a>
+            )}
+            {link && (
+              <a 
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${isActive ? 'text-black' : 'text-white/70'} group-hover:text-black transition-colors duration-500`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                🔗
+              </a>
+            )}
+          </div>
+          
+          <p className={`${isActive ? 'text-black/70' : 'text-white/70'} group-hover:text-black/70 mb-4 transition-colors duration-500`}>
+            {purpose}
+          </p>
+          
+          <div className="flex-grow overflow-y-auto">
+            <div className="space-y-4">
+              <div>
+                <h4 className={`font-semibold mb-2 ${isActive ? 'text-black' : 'text-[#8B5CF6]'} group-hover:text-black transition-colors duration-500`}>Features</h4>
+                <ul className={`list-disc pl-5 space-y-1 ${isActive ? 'text-black/70' : 'text-white/70'} group-hover:text-black/70 transition-colors duration-500`}>
+                  {features.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className={`font-semibold mb-2 ${isActive ? 'text-black' : 'text-[#8B5CF6]'} group-hover:text-black transition-colors duration-500`}>Tech Stack</h4>
+                <div className="flex flex-wrap gap-2">
+                  {tech.map((tech, idx) => (
+                    <span 
+                      key={idx}
+                      className={`px-2 py-1 rounded-md ${isActive ? 'bg-black/10' : 'bg-[#1A1F2C]'} ${isActive ? 'text-black/70' : 'text-white/70'} group-hover:bg-black/10 group-hover:text-black/70 text-sm transition-colors duration-500`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+};
+
 const Projects = () => {
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  
   const projects = [
     {
       title: "Internship",
@@ -86,82 +197,12 @@ const Projects = () => {
           <ScrollArea className="w-full whitespace-nowrap">
             <div className="flex space-x-4 pb-4">
               {projects.map((project, index) => (
-                <motion.div
+                <ProjectCard
                   key={index}
-                  className="flex-none w-[300px]"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    transition: { duration: 0.3, ease: "easeInOut" } 
-                  }}
-                >
-                  <Card className="h-[400px] bg-[#2A2F3C] border-none text-white hover:bg-[#D3E4FD] hover:text-black transition-all duration-500 ease-in-out group">
-                    <div className="p-6 h-full flex flex-col">
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="flex items-center gap-3">
-                          <project.icon 
-                            size={24} 
-                            className="text-white/70 group-hover:text-black transition-colors duration-500" 
-                          />
-                          <h3 className="text-xl font-semibold">{project.title}</h3>
-                        </div>
-                        {project.githubLink && (
-                          <a 
-                            href={project.githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white/70 group-hover:text-black transition-colors duration-500"
-                          >
-                            <FaGithub size={24} />
-                          </a>
-                        )}
-                        {project.link && (
-                          <a 
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white/70 group-hover:text-black transition-colors duration-500"
-                          >
-                            🔗
-                          </a>
-                        )}
-                      </div>
-                      
-                      <p className="text-white/70 group-hover:text-black/70 mb-4 transition-colors duration-500">
-                        {project.purpose}
-                      </p>
-                      
-                      <div className="flex-grow overflow-y-auto">
-                        <div className="space-y-4">
-                          <div>
-                            <h4 className="font-semibold mb-2 text-[#8B5CF6] group-hover:text-black transition-colors duration-500">Features</h4>
-                            <ul className="list-disc pl-5 space-y-1 text-white/70 group-hover:text-black/70 transition-colors duration-500">
-                              {project.features.map((feature, idx) => (
-                                <li key={idx}>{feature}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold mb-2 text-[#8B5CF6] group-hover:text-black transition-colors duration-500">Tech Stack</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {project.tech.map((tech, idx) => (
-                                <span 
-                                  key={idx}
-                                  className="px-2 py-1 rounded-md bg-[#1A1F2C] text-white/70 group-hover:bg-black/10 group-hover:text-black/70 text-sm transition-colors duration-500"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
+                  isActive={activeProjectIndex === index}
+                  onClick={() => setActiveProjectIndex(index)}
+                  {...project}
+                />
               ))}
             </div>
           </ScrollArea>
