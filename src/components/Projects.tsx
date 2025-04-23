@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
@@ -125,7 +126,8 @@ const Projects = () => {
       ],
       tech: ["Python 3", "Django 5.1.4", "Django REST Framework", "shutil"],
       githubLink: "https://github.com/Deepak-80085",
-      icon: Code
+      icon: Code,
+      color: "bg-green-100"
     },
     {
       title: "HTML Projects",
@@ -136,7 +138,8 @@ const Projects = () => {
       ],
       tech: ["HTML5", "CSS3", "Flexbox", "Vanilla JS"],
       githubLink: "https://github.com/Deepak-80085",
-      icon: Globe
+      icon: Globe,
+      color: "bg-yellow-100"
     },
     {
       title: "Christ University Projects",
@@ -147,7 +150,8 @@ const Projects = () => {
       ],
       tech: ["C++ (63%)", "C (19%)", "Java (15%)", "Python"],
       githubLink: "https://github.com/Deepak-80085",
-      icon: GraduationCap
+      icon: GraduationCap,
+      color: "bg-pink-100"
     },
     {
       title: "C Programming Projects",
@@ -159,7 +163,8 @@ const Projects = () => {
       ],
       tech: ["C (97.5%)", "Makefiles"],
       githubLink: "https://github.com/Deepak-80085",
-      icon: Database
+      icon: Database,
+      color: "bg-purple-100"
     },
     {
       title: "Sportshunt Platform",
@@ -170,7 +175,8 @@ const Projects = () => {
       ],
       tech: ["Full-stack web development", "Booking system", "Social features"],
       link: "https://sportshunt.in",
-      icon: Layout
+      icon: Layout,
+      color: "bg-orange-100"
     }
   ];
 
