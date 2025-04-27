@@ -1,73 +1,53 @@
-# Welcome to your Lovable project
+# About Me
 
-## Project info
+I am Deepak Kumaran M, a passionate Computer Science & Mathematics student with a strong foundation in software development and a keen interest in building modern web applications. My expertise includes Python, Django, React, IoT, and AI/ML, and I enjoy turning complex problems into elegant, user-centric solutions.
 
-**URL**: https://lovable.dev/projects/ce05e76d-f220-4e4d-80ec-976665a227a1
+---
 
-## How can I edit this code?
+# Project Overview
 
-There are several ways of editing your application.
+This portfolio website is built using **React** and **Vite**.  
+- **React** was chosen for its component-based architecture, allowing for reusable UI elements and a smooth development experience.
+- **Vite** serves as the build tool and development server, providing lightning-fast hot module replacement and optimized production builds. Vite's modern approach made the development process efficient and enjoyable.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ce05e76d-f220-4e4d-80ec-976665a227a1) and start prompting.
+## Key Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React**: For building interactive user interfaces.
+- **Vite**: For fast development and optimized builds.
+- **TypeScript**: For type safety and better code maintainability.
+- **Tailwind CSS**: For rapid and responsive UI styling.
+- **shadcn-ui**: For beautiful, accessible UI components.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## How to Run This Project
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+   The site will be available at `http://localhost:8080` (or the port shown in your terminal).
 
-Follow these steps:
+3. **Build for production:**
+   ```sh
+   npm run build
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Why React + Vite?
 
-# Step 3: Install the necessary dependencies.
-npm i
+- **React** enables a modular, maintainable codebase and a rich ecosystem of libraries.
+- **Vite** offers instant server start, fast hot reloading, and a modern build pipeline, making it ideal for React projects.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## About This Portfolio
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/ce05e76d-f220-4e4d-80ec-976665a227a1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This site showcases my journey, projects, and skills in software engineering, with a focus on modern web technologies and best practices.
