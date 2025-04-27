@@ -16,7 +16,7 @@ const About = () => {
           <div className="bg-portfolio-accent4/20 rounded-xl p-6 md:p-8 shadow-sm">
             <h3 className="text-xl md:text-2xl font-bold text-portfolio-primary mb-4">Professional Summary</h3>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Blending rigorous mathematical foundations with practical software engineering expertise across Python, Django, React, and Android platforms. 
+              Blending simple mathematical foundations with practical software engineering expertise across Python, Django, React, and Android platforms. 
               Specializing in IoT implementations, computer vision algorithms, and network monitoring systems, tackling complex challenges with innovative approaches. 
               Driven by a passion for continuous learning and applying theoretical concepts to develop robust, scalable solutions that address real-world problems.
             </p>

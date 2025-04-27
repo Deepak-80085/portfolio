@@ -14,7 +14,7 @@ const Projects = () => {
       purpose: "Python scripts for SNMP‑based IoT monitoring during an internship.",
       features: ["SNMP polling", "Log parsing", "Alert generation"],
       tech: ["Python 3", "pysnmp", "os", "argparse"],
-      githubLink: "https://github.com/Deepak-80085"
+      
     },
     {
       title: "Python & Django Projects",
@@ -26,7 +26,7 @@ const Projects = () => {
         "REST-Framework To-Do API: Complete CRUD operations"
       ],
       tech: ["Python 3", "Django 5.1.4", "Django REST Framework", "shutil"],
-      githubLink: "https://github.com/Deepak-80085"
+
     },
     {
       title: "HTML Projects",
@@ -36,7 +36,7 @@ const Projects = () => {
         "Dino Game: Chrome‑style offline dinosaur runner with dynamic obstacles"
       ],
       tech: ["HTML5", "CSS3", "Flexbox", "Vanilla JS"],
-      githubLink: "https://github.com/Deepak-80085"
+      
     },
     {
       title: "Christ University Projects",
@@ -46,7 +46,7 @@ const Projects = () => {
         "Java exercises and Python scripts from coursework"
       ],
       tech: ["C++ (63%)", "C (19%)", "Java (15%)", "Python"],
-      githubLink: "https://github.com/Deepak-80085"
+      
     },
     {
       title: "C Programming Projects",
@@ -57,7 +57,7 @@ const Projects = () => {
         "Mandelbrot Generator: Fractal renderer"
       ],
       tech: ["C (97.5%)", "Makefiles"],
-      githubLink: "https://github.com/Deepak-80085"
+      
     },
     {
       title: "Sportshunt Platform",
@@ -102,16 +102,6 @@ const Projects = () => {
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                          {project.githubLink && (
-                            <a 
-                              href={project.githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white/70 hover:text-white transition-colors"
-                            >
-                              <FaGithub size={24} />
-                            </a>
-                          )}
                           {project.link && (
                             <a 
                               href={project.link}

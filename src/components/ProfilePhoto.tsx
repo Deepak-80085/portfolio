@@ -31,7 +31,7 @@ const ProfilePhoto = () => {
             rotate: hoveredIndex === null ? (index - 2) * 5 : (hoveredIndex === index ? 0 : (index - 2) * 5),
           }}
           transition={{ 
-            duration: 0.3, 
+            duration: 0.1, 
             ease: 'easeInOut'
           }}
           onHoverStart={() => setHoveredIndex(index)}
