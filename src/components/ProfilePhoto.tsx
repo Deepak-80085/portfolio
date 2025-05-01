@@ -1,12 +1,11 @@
-
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const images = [
-  "/lovable-uploads/b0931370-7e89-4f10-bc9f-f2eca4a9b372.png",
-  "/lovable-uploads/666407de-5157-471c-8edb-f7f228b05a17.png",
-  "/lovable-uploads/031321d2-a4dd-49ff-8bf8-eeaa440ab788.png",
-  "/lovable-uploads/113b4417-c595-4401-852b-3a523573701e.png"
+    "/dkportfolio/lovable-uploads/b0931370-7e89-4f10-bc9f-f2eca4a9b372.png",
+  "/dkportfolio/lovable-uploads/666407de-5157-471c-8edb-f7f228b05a17.png",
+  "/dkportfolio/lovable-uploads/031321d2-a4dd-49ff-8bf8-eeaa440ab788.png",
+  "/dkportfolio/lovable-uploads/113b4417-c595-4401-852b-3a523573701e.png"
 ];
 
 const ProfilePhoto = () => {
