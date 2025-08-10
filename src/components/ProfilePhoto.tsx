@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const basePath = import.meta.env.DEV ? "" : "/dkportfolio";
+const basePath = import.meta.env.DEV ? "" : "/portfolio";
 
 const images = [
   `${basePath}/imgs/b0931370-7e89-4f10-bc9f-f2eca4a9b372.png`,

@@ -17,7 +17,7 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter basename={import.meta.env.DEV ? "/" : "/dkportfolio/"}>
+          <BrowserRouter basename={import.meta.env.DEV ? "/" : "/portfolio/"}>
             <Routes>
               <Route path="/" element={<Index />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
