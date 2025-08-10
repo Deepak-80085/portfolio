@@ -6,7 +6,7 @@ const Resume = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openResumeLink = () => {
-    window.open('https://drive.google.com/file/d/1Z34Vzr-cpFWM5NxGRLijAyDmJ4a1r986/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1yd1h3RvaKjFRqVropAglfvSvs4oMBo6B/view?usp=sharing', '_blank');
   };
 
   return (
